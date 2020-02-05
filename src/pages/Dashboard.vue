@@ -192,40 +192,46 @@
           <div class="modal-content">
             <div class="modal-body">
               <div v-if="active.type=='word'">
-                <a
-                  :href="
+                <div class="row">
+                  <a
+                    class="mr-1"
+                    :href="
                     `${hostname}/cv/${active.id}/${active.type}?template=1`
                   "
-                >
-                  <img src="./../assets/word.png" class="img-fluid" width="100px" />
-                  <br />
-                  <b>Minimo</b>
-                </a>
+                  >
+                    <img src="./../assets/word.png" class="img-fluid" width="100px" />
+                    <br />
+                    <b>Minimo</b>
+                  </a>
+                </div>
               </div>
               <div v-else>
-                <a
-                  target="_blank"
-                  :href="
+                <div class="row px-2">
+                  <a
+                    target="_blank"
+                    :href="
                     `${hostname}/cv/${active.id}/${active.type}?template=1`
-                  "
-                >
-                  <img src="./../assets/pdf.png" class="img-fluid" width="100px" />
-                  <br />
-                  <b>Enfold</b>
-                </a>
-                <a
-                  class="mr-1"
-                  v-for="pdf in active.files"
-                  :key="pdf.template"
-                  target="_blank"
-                  :href="
+                    "
+                    class="mr-1"
+                  >
+                    <img src="./../assets/pdf.png" class="img-fluid" width="100px" />
+                    <br />
+                    <b>Enfold</b>
+                  </a>
+                  <a
+                    class="mr-1"
+                    v-for="pdf in active.files"
+                    :key="pdf.template"
+                    target="_blank"
+                    :href="
                     `${hostname}/client_pdfs/${pdf.pdf}`
                   "
-                >
-                  <img src="./../assets/word.png" class="img-fluid" width="100px" />
-                  <br />
-                  <b>Minimo</b>
-                </a>
+                  >
+                    <img src="./../assets/word.png" class="img-fluid" width="100px" />
+                    <br />
+                    <b>Minimo</b>
+                  </a>
+                </div>
               </div>
             </div>
             <div class="modal-footer">
