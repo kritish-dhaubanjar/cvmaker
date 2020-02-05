@@ -1,0 +1,169 @@
+[
+  {
+    "meta": "header",
+    "data": {
+      "firstName": "",
+      "middleName": "",
+      "lastName": "",
+      "city": "",
+      "state": "",
+      "country": "",
+      "phone": "",
+      "email": "",
+      "categories": ["Welder", "Security Guard"],
+      "social": [
+        {
+          "platform": "website",
+          "link": ""
+        },
+        {
+          "platform": "linkedin",
+          "link": ""
+        },
+        {
+          "platform": "twitter",
+          "link": ""
+        },
+        {
+          "platform": "facebook",
+          "link": ""
+        }
+      ]
+    }
+  },
+
+  {
+    "meta": "workHistory",
+    "data": [
+      {
+        "title": "",
+        "employer": "",
+        "city": "",
+        "state": "",
+        "country": "",
+        "isCurrent": true,
+        "startDate": "2020-02",
+        "endDate": "2020-02",
+        "description": [{ "text": "", "addToSuggestion": false }]
+      }
+    ]
+  },
+
+  {
+    "meta": "education",
+    "data": [
+      {
+        "name": "",
+        "location": "",
+        "degree": "",
+        "fieldOfStudy": "",
+        "startDate": "",
+        "endDate": "",
+        "description": [{ "text": "", "addToSuggestion": false }],
+        "isCurrent": true
+      }
+    ]
+  },
+  {
+    "meta": "skills",
+    "data": [
+      {
+        "skill": "",
+        "level": 0,
+        "addToSuggestion": false
+      }
+    ]
+  },
+  {
+    "meta": "languages",
+    "data": [
+      {
+        "language": "",
+        "level": 0,
+        "addToSuggestion": false
+      }
+    ]
+  },
+  {
+    "meta": "strengths",
+    "data": [
+      {
+        "strength": "",
+        "addToSuggestion": false
+      }
+    ]
+  },
+  {
+    "meta": "declaration",
+    "data": {
+      "text": "",
+      "addToSuggestion": false
+    }
+  },
+  {
+    "meta": "summary",
+    "data": {
+      "text": "",
+      "addToSuggestion": true
+    }
+  },
+  {
+    "meta": "info",
+    "data": [
+      {
+        "key": "",
+        "value": "",
+        "addToSuggestion": true
+      }
+    ]
+  },
+  {
+    "meta": "trainings_courses",
+    "data": {
+      "trainings": {
+        "data": [{ "text": "", "addToSuggestion": false }]
+      },
+      "courses": {
+        "data": [{ "text": "", "addToSuggestion": false }]
+      }
+    }
+  },
+  {
+    "meta": "certifications_awards",
+    "data": {
+      "certifications": {
+        "data": [{ "text": "", "addToSuggestion": false }]
+      },
+      "awards": {
+        "data": [{ "text": "", "addToSuggestion": false }]
+      }
+    }
+  },
+  {
+    "meta": "license",
+    "data": [{ "license": "", "addToSuggestion": false }]
+  },
+  {
+    "meta": "additional",
+    "data": [
+      {
+        "meta": "",
+        "data": [{ "text": "" }, { "text": "" }]
+      }
+    ]
+  },
+  {
+    "meta": "references",
+    "data": [
+      {
+        "name": "",
+        "company": "",
+        "city": "",
+        "state": "",
+        "country": "",
+        "phone": "",
+        "email": ""
+      }
+    ]
+  }
+]
