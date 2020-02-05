@@ -192,7 +192,7 @@
           <div class="modal-content">
             <div class="modal-body">
               <div v-if="active.type=='word'">
-                <div class="row">
+                <div class="row px-2">
                   <a
                     class="mr-1"
                     :href="
