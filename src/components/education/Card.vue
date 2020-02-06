@@ -90,6 +90,11 @@ export default {
           this.academic.endDate !== null &&
           this.academic.endDate.length > 0
         ) {
+          detail +=
+            this.academic.startDate !== null &&
+            this.academic.startDate.length > 0
+              ? ""
+              : ", ";
           detail += "Graduated";
           let date = this.academic.endDate.split("-");
           detail += ` ${this.getMonth(date[1])}`;
