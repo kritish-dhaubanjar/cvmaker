@@ -62,13 +62,21 @@
         <br />
         <br />
         <br />
-        <button class="btn btn-outline-primary" type="submit" @click="$emit('prev')">BACK</button>
+        <button class="btn btn-outline-primary btn-sm" type="submit" @click="$emit('prev')">BACK</button>
         <button
-          class="btn btn-danger ml-auto"
+          class="btn btn-danger ml-auto btn-sm py-1"
           type="submit"
           style="float:right"
           @click.prevent="$emit('next', data)"
-        >NEXT: REFERENCES</button>
+        >SAVE & NEXT: REFERENCES</button>
+        <button
+          class="btn btn-info ml-auto mr-1 btn-sm"
+          type="submit"
+          style="float:right"
+          @click.prevent="$emit('saveresume', data)"
+        >
+          <i class="far fa-save"></i> SAVE
+        </button>
       </div>
     </div>
   </div>

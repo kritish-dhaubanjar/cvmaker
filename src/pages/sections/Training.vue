@@ -181,14 +181,23 @@
         <br />
         <br />
         <br />
-        <button class="btn btn-outline-primary" type="submit" @click="$emit('prev')">BACK</button>
+        <button class="btn btn-outline-primary btn-sm" type="submit" @click="$emit('prev')">BACK</button>
         <button
-          class="btn btn-danger ml-auto"
+          class="btn btn-danger ml-auto py-1 btn-sm"
           type="submit"
           style="float:right"
           @click.prevent="$emit('next', data)"
           :disabled="disabled"
-        >NEXT: CERTIFICATIONS & AWARDS</button>
+        >SAVE & NEXT: CERTIFICATIONS</button>
+        <button
+          class="btn btn-info ml-auto mr-1 btn-sm"
+          type="submit"
+          style="float:right"
+          :disabled="disabled"
+          @click.prevent="$emit('saveresume', data)"
+        >
+          <i class="far fa-save"></i> SAVE
+        </button>
       </div>
     </div>
   </div>
@@ -253,11 +262,11 @@ export default {
     },
 
     uniqueTrainings() {
-      return Array.from(new Set(this.trainings));
+      return Array.from(new Set(this.trainings_filtered));
     },
 
     uniqueCourses() {
-      return Array.from(new Set(this.courses));
+      return Array.from(new Set(this.courses_filtered));
     }
   },
 
@@ -281,6 +290,7 @@ export default {
               .then(res => res.json())
               .then(data => {
                 this.trainings = [...this.trainings, ...data];
+                this.trainings_filtered = this.trainings;
               })
               .catch(err => {
                 console.log(err);
@@ -301,6 +311,7 @@ export default {
               .then(res => res.json())
               .then(data => {
                 this.courses = [...this.courses, ...data];
+                this.courses_filtered = this.courses;
               })
               .catch(err => {
                 console.log(err);

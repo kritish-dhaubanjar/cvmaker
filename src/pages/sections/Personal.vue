@@ -73,14 +73,23 @@
         <br />
         <br />
         <br />
-        <button class="btn btn-outline-primary" type="submit" @click="$emit('prev')">BACK</button>
+        <button class="btn btn-outline-primary btn-sm" type="submit" @click="$emit('prev')">BACK</button>
         <button
-          class="btn btn-danger ml-auto"
+          class="btn btn-danger ml-auto btn-sm py-1"
           type="submit"
           style="float:right"
           @click.prevent="$emit('next', data)"
           :disabled="disabled"
-        >NEXT: DRIVING LICENSE</button>
+        >SAVE & NEXT: DRIVING LICENSE</button>
+        <button
+          class="btn btn-info ml-auto mr-1 btn-sm"
+          type="submit"
+          style="float:right"
+          :disabled="disabled"
+          @click.prevent="$emit('saveresume', data)"
+        >
+          <i class="far fa-save"></i> SAVE
+        </button>
       </div>
     </div>
   </div>
@@ -159,7 +168,7 @@ export default {
 
     addToInfo(index) {
       this.data.data.push({
-        key: this.suggestions[index],
+        key: this.filtered[index],
         value: "",
         addToSuggestion: false
       });

@@ -11,6 +11,7 @@
     @prev="prev"
     @submit="submit"
     @rearranged="rearranged"
+    @saveresume="$emit('saveresume', data)"
   />
 </template>
 

@@ -185,14 +185,23 @@
         <br />
         <br />
         <br />
-        <button class="btn btn-outline-primary" type="submit" @click="$emit('prev')">BACK</button>
+        <button class="btn btn-outline-primary btn-sm" type="submit" @click="$emit('prev')">BACK</button>
         <button
-          class="btn btn-danger ml-auto"
+          class="btn btn-danger ml-auto btn-sm py-1"
           type="submit"
           style="float:right"
           @click.prevent="$emit('next', data)"
           :disabled="disabled"
-        >NEXT: SUMMARY</button>
+        >SAVE & NEXT: SUMMARY</button>
+        <button
+          class="btn btn-info ml-auto mr-1 btn-sm"
+          type="submit"
+          style="float:right"
+          :disabled="disabled"
+          @click.prevent="$emit('saveresume', data)"
+        >
+          <i class="far fa-save"></i> SAVE
+        </button>
       </div>
     </div>
   </div>
@@ -233,15 +242,14 @@ export default {
 
   watch: {
     certification_search() {
-      this.certifications_filtered = this.certification_suggestions.filter(
-        suggestion =>
-          suggestion
-            .toLowerCase()
-            .includes(this.certification_search.toLowerCase())
+      this.certifications_filtered = this.certifications.filter(suggestion =>
+        suggestion
+          .toLowerCase()
+          .includes(this.certification_search.toLowerCase())
       );
     },
     award_search() {
-      this.awards_filter = this.certification_suggestions.filter(suggestion =>
+      this.awards_filter = this.awards.filter(suggestion =>
         suggestion.toLowerCase().includes(this.award_search.toLowerCase())
       );
     }
@@ -260,11 +268,11 @@ export default {
     },
 
     uniqueCertifications() {
-      return Array.from(new Set(this.certifications));
+      return Array.from(new Set(this.certifications_filtered));
     },
 
     uniqueAwards() {
-      return Array.from(new Set(this.awards));
+      return Array.from(new Set(this.awards_filter));
     }
   },
 
@@ -288,6 +296,7 @@ export default {
               .then(res => res.json())
               .then(data => {
                 this.certifications = [...this.certifications, ...data];
+                this.certifications_filtered = this.certifications;
               })
               .catch(err => {
                 console.log(err);
@@ -308,6 +317,7 @@ export default {
               .then(res => res.json())
               .then(data => {
                 this.awards = [...this.awards, ...data];
+                this.awards_filter = this.awards;
               })
               .catch(err => {
                 console.log(err);

@@ -81,6 +81,16 @@ export default {
     }
   },
 
+  watch: {
+    resume: {
+      deep: true,
+      immediate: true,
+      handler(val, newVal) {
+        this.resume_ = this.resume;
+      }
+    }
+  },
+
   computed: {
     disabled() {
       return this.src.length == 0 && this.id == null;
@@ -92,6 +102,7 @@ export default {
       this.resume_ = this.resume_.filter(_item => {
         return _item != item;
       });
+      this.$emit("save", this.resume_);
     },
 
     editSection(meta) {
@@ -131,22 +142,25 @@ export default {
               })
                 .then(res => res.json())
                 .then(res => {
-                  // this.$router.push({
-                  //   name: "dashboard"
-                  // });
-                  // console.log(res);
+                  this.$router.push({
+                    name: "dashboard"
+                  });
                 })
                 .catch(err => {
                   console.log(err);
                 });
+            } else {
+              this.$router.push({
+                name: "dashboard"
+              });
             }
           }
         })
-        .then(() => {
-          this.$router.push({
-            name: "dashboard"
-          });
-        })
+        // .then(() => {
+        //   this.$router.push({
+        //     name: "dashboard"
+        //   });
+        // })
         .catch(err => {
           console.log(err);
         });

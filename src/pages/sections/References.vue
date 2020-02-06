@@ -81,13 +81,25 @@
 
     <div class="row">
       <div class="col-12">
-        <button class="btn btn-outline-primary" type="submit" @click="$emit('prev')">BACK</button>
         <button
-          class="btn btn-danger ml-auto"
+          class="btn btn-outline-primary btn-sm py-1"
+          type="submit"
+          @click="$emit('prev')"
+        >BACK</button>
+        <button
+          class="btn btn-danger ml-auto btn-sm py-1"
           type="submit"
           style="float:right"
           @click.prevent="$emit('next', data)"
         >SAVE &amp; NEXT</button>
+        <button
+          class="btn btn-info ml-auto mr-1 btn-sm py-1"
+          type="submit"
+          style="float:right"
+          @click.prevent="$emit('saveresume', data)"
+        >
+          <i class="far fa-save"></i> SAVE
+        </button>
       </div>
     </div>
   </div>

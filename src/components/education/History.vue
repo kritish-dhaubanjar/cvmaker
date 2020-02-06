@@ -32,13 +32,21 @@
 
     <div class="row">
       <div class="col-12">
-        <button class="btn btn-outline-primary" type="submit" @click="$emit('prev')">BACK</button>
+        <button class="btn btn-outline-primary btn-sm" type="submit" @click="$emit('prev')">BACK</button>
         <button
-          class="btn btn-danger ml-auto"
+          class="btn btn-danger ml-auto btn-sm"
           type="submit"
           style="float:right"
           @click.prevent="$emit('submit', history)"
-        >NEXT: SKILLS</button>
+        >SAVE & NEXT: SKILLS</button>
+        <button
+          class="btn btn-info ml-auto mr-1 btn-sm"
+          type="submit"
+          style="float:right"
+          @click.prevent="$emit('saveresume', history)"
+        >
+          <i class="far fa-save"></i> SAVE
+        </button>
       </div>
     </div>
   </div>

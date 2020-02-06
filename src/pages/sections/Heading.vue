@@ -148,19 +148,28 @@
         </form>
       </div>
       <div class="col-lg-3 d-none d-sm-none d-md-none d-lg-block">
-        <img src="https://via.placeholder.com/595x842" class="img-fluid" />
+        <img src="./../../assets/resume.png" class="img-fluid" />
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        <button class="btn btn-outline-primary" type="submit" disabled>BACK</button>
+        <button class="btn btn-outline-primary btn-sm" type="submit" disabled>BACK</button>
         <button
-          class="btn btn-danger ml-auto"
+          class="btn btn-danger ml-auto btn-sm"
           type="submit"
           style="float:right"
           @click.prevent="submit"
           :disabled="isEnabled"
-        >NEXT: WORK HISTORY</button>
+        >SAVE & NEXT: WORK HISTORY</button>
+        <button
+          class="btn btn-info ml-auto mr-1 btn-sm"
+          type="submit"
+          style="float:right"
+          :disabled="isEnabled"
+          @click.prevent="$emit('saveresume', data)"
+        >
+          <i class="far fa-save"></i> SAVE
+        </button>
       </div>
     </div>
   </div>

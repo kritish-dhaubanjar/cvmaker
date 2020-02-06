@@ -227,7 +227,7 @@ export default {
     },
     addSuggestion(index) {
       this.data.description.push({
-        text: this.suggestions[index],
+        text: this.filtered[index],
         addToSuggestion: false
       });
     },

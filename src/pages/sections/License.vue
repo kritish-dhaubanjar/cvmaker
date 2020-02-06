@@ -66,14 +66,23 @@
         <br />
         <br />
         <br />
-        <button class="btn btn-outline-primary" type="submit" @click="$emit('prev')">BACK</button>
+        <button class="btn btn-outline-primary btn-sm" type="submit" @click="$emit('prev')">BACK</button>
         <button
-          class="btn btn-danger ml-auto"
+          class="btn btn-danger ml-auto btn-sm py-1"
           type="submit"
           style="float:right"
           @click.prevent="$emit('next', data)"
           :disabled="disabled"
-        >NEXT: TRAININGS & COURSES</button>
+        >SAVE & NEXT: TRAININGS</button>
+        <button
+          class="btn btn-info ml-auto mr-1 btn-sm"
+          type="submit"
+          style="float:right"
+          :disabled="disabled"
+          @click.prevent="$emit('saveresume', data)"
+        >
+          <i class="far fa-save"></i> SAVE
+        </button>
       </div>
     </div>
   </div>
@@ -152,7 +161,7 @@ export default {
 
     addToLicense(index) {
       this.data.data.push({
-        license: this.suggestions[index],
+        license: this.filtered[index],
         addToSuggestion: false
       });
     }

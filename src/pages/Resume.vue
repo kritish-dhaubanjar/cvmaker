@@ -114,8 +114,19 @@
         :id="id"
         :photo="photo"
         @section="section"
+        @saveresume="saveresume"
+        @save="save"
       ></component>
     </keep-alive>
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="toast">
+      <div class="toast-header">
+        <strong class="mr-auto">Section Saved</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">The changes were saved successfully!</div>
+    </div>
   </div>
 </template>
 
@@ -187,8 +198,17 @@ export default {
       index === -1 ? this.resume.push(data) : (this.resume[index] = data);
       this.current++;
     },
+    saveresume(data) {
+      let index = this.resume.findIndex(section => section.meta === data.meta);
+      index === -1 ? this.resume.push(data) : (this.resume[index] = data);
+      $("#toast").toast("show");
+    },
     prev() {
       this.current--;
+    },
+    //Finalize
+    save(resume) {
+      this.resume = resume;
     },
     section(meta) {
       switch (meta) {
@@ -262,5 +282,14 @@ export default {
   color: #fff !important;
   font-weight: bold;
   border-bottom: 0 !important;
+}
+
+#toast {
+  margin: auto;
+  position: fixed;
+  bottom: 20px;
+  z-index: 2;
+  left: 0;
+  right: 0;
 }
 </style>
