@@ -196,7 +196,7 @@
                   <a
                     class="mr-1"
                     :href="
-                    `${hostname}/cv/${active.id}/${active.type}?template=1`
+                    `${hostname}/cv/${active.slug}/${active.type}?template=1`
                   "
                   >
                     <img src="./../assets/word.png" class="img-fluid" width="100px" />
@@ -210,7 +210,7 @@
                   <a
                     target="_blank"
                     :href="
-                    `${hostname}/cv/${active.id}/${active.type}?template=1`
+                    `${hostname}/cv/${active.slug}/${active.type}?template=1`
                     "
                     class="mr-1"
                   >
@@ -254,7 +254,7 @@ export default {
       clients: [],
       all: [],
       active: {
-        id: null,
+        slug: null,
         type: "",
         files: []
       },
@@ -316,8 +316,8 @@ export default {
       this.$router.push("/resume");
     },
 
-    download(type, { id, pdfs }) {
-      this.active.id = id;
+    download(type, { pdfs, slug }) {
+      this.active.slug = slug;
       this.active.type = type;
       this.active.files = pdfs;
       $("#myModal").modal("show");
