@@ -267,31 +267,3 @@ ul {
   align-items: flex-end;
 }
 </style>
-
-
-
-	var upload_photo_form = document.getElementById('upload_photo_form');
-	upload_photo_form.addEventListener('submit', uploadPhoto.bind(upload_photo_form));
-
-	function uploadPhoto(e) {
-		e.preventDefault();
-		console.log('uploading photo');
-		const url = 'api/uploadphoto';
-		fetch(url, {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json'
-			},
-			body: new FormData(this),
-
-		})
-		.then(res => res.json())
-		.then(res => {
-			console.log(res);
-			
-			if(res.imagePath) {
-				document.getElementById('imagePreview').innerHTML = `<img src="${res.imagePath}" alt="preview" class="img-thumbnail" width="256">`;
-			}
-		})
-		.catch(err => console.log(err.response));
-	}
