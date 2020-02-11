@@ -198,11 +198,36 @@ export default {
       index === -1 ? this.resume.push(data) : (this.resume[index] = data);
       this.current++;
     },
+
     saveresume(data) {
       let index = this.resume.findIndex(section => section.meta === data.meta);
       index === -1 ? this.resume.push(data) : (this.resume[index] = data);
-      $("#toast").toast("show");
+      // PUT ON SAVE
+      if (this.id != null) {
+        fetch(`${this.hostname}/api/clients/${this.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify({ data: this.resume })
+        })
+          .then(res => {
+            return res.json();
+          })
+          .then(data => {
+            if (data.msg == "success") {
+              $("#toast").toast("show");
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else {
+        $("#toast").toast("show");
+      }
     },
+
     prev() {
       this.current--;
     },

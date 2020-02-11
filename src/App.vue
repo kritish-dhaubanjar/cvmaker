@@ -55,4 +55,8 @@ export default {
 .modal-body {
   border-radius: 0 !important;
 }
+
+.addMore {
+  font-weight: bold;
+}
 </style>
