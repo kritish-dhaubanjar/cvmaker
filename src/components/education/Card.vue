@@ -11,8 +11,8 @@
             </p>
             <ul v-if="academic.description.length>0">
               <li
-                v-for="description in academic.description"
-                :key="description"
+                v-for="(description,index) in academic.description"
+                :key="index"
               >{{description.text}}</li>
             </ul>
           </div>
