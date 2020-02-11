@@ -80,6 +80,12 @@ export default {
   mounted() {
     if (this.resume.length > 0) {
       this.resume_ = this.resume;
+      let index = this.resume.findIndex(section => section.meta === "summary");
+
+      if (index > -1 && index != 1) {
+        let summary = this.resume_.splice(index, 1);
+        this.resume_.splice(1, 0, summary.pop());
+      }
     }
   },
 
