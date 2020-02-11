@@ -111,6 +111,15 @@
           <button class="btn btn-sm btn-info my-4 ml-auto float-right" @click.prevent="toggle">
             <i class="far fa-check-square"></i> ALL
           </button>
+          <button
+            class="btn btn-outline-info btn-sm"
+            @click.prevent="showParser = !showParser"
+          >{{showParser? 'Hide Parser':'Show Parser' }}</button>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mb-5" v-if="showParser">
+          <textarea class="parser" v-model="text" rows="10"></textarea>
+          <button class="btn btn-outline-secondary btn-sm float-right" @click.prevent="parse">PARSE</button>
         </div>
 
         <div class="col-12 col-sm-12 col-md-12 col-lg-4">
@@ -166,6 +175,8 @@ export default {
 
   data() {
     return {
+      text: "",
+      showParser: true,
       search: "",
       filtered: [],
       titles: [
@@ -255,6 +266,19 @@ export default {
           e.addToSuggestion = true;
         });
       }
+    },
+
+    parse() {
+      let pattern = /[\r\n]+/gm;
+      let parsed = this.text.split(pattern);
+      console.log(parsed);
+      this.data.description = [];
+      parsed.forEach(p => {
+        this.data.description.push({
+          text: p,
+          addToSuggestion: false
+        });
+      });
     }
   },
 
@@ -356,5 +380,10 @@ p {
 label {
   font-weight: bold;
   font-size: 13px;
+}
+
+.parser {
+  width: 100%;
+  font-size: 12px;
 }
 </style>
