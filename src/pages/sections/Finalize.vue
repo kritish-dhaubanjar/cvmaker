@@ -156,11 +156,8 @@ export default {
               this.id != null && // EDIT MODE
               this.photo.length > 0 // PHOTO EXISTS
             ) {
-              fetch(`${this.hostname}/api/deletephoto`, {
-                method: "DELETE",
-                body: JSON.stringify({
-                  userId: this.id
-                })
+              fetch(`${this.hostname}/api/deletephoto/${this.id}`, {
+                method: "DELETE"
               })
                 .then(json => json.json())
                 .then(data => {
