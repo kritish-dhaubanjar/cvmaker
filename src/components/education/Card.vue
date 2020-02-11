@@ -10,7 +10,10 @@
               <i>{{education}}</i>
             </p>
             <ul v-if="academic.description.length>0">
-              <li>{{academic.description[0].text}}</li>
+              <li
+                v-for="description in academic.description"
+                :key="description"
+              >{{description.text}}</li>
             </ul>
           </div>
           <div class="col-2 text-right">

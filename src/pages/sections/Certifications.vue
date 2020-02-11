@@ -74,9 +74,15 @@
             </ul>
 
             <button
-              class="btn btn-success btn-block my-4"
+              class="btn btn-success addMore my-4"
               @click.prevent="addCertification"
             >ADD ONE MORE</button>
+            <button
+              class="btn btn-info my-4 ml-auto float-right"
+              @click.prevent="toggleCertification"
+            >
+              <i class="far fa-check-square"></i> ALL
+            </button>
           </div>
 
           <div class="col-12 col-sm-12 col-md-12 col-lg-4">
@@ -144,7 +150,10 @@
               </draggable>
             </ul>
 
-            <button class="btn btn-success btn-block my-4" @click.prevent="addAward">ADD ONE MORE</button>
+            <button class="btn btn-success addMore my-4" @click.prevent="addAward">ADD ONE MORE</button>
+            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleAward">
+              <i class="far fa-check-square"></i> ALL
+            </button>
           </div>
 
           <div class="col-12 col-sm-12 col-md-12 col-lg-4">
@@ -351,6 +360,15 @@ export default {
         addToSuggestion: false
       });
     },
+
+    toggleCertification() {
+      if (this.data.data.certifications.data.length > 0) {
+        this.data.data.certifications.data.forEach(e => {
+          e.addToSuggestion = true;
+        });
+      }
+    },
+
     // awards
     addAward() {
       this.data.data.awards.data.push({
@@ -370,6 +388,14 @@ export default {
         text: this.uniqueAwards[index],
         addToSuggestion: false
       });
+    },
+
+    toggleAward() {
+      if (this.data.data.awards.data.length > 0) {
+        this.data.data.awards.data.forEach(e => {
+          e.addToSuggestion = true;
+        });
+      }
     }
   },
 
@@ -406,7 +432,7 @@ label {
   font-size: 13px;
 }
 
-.btn-block {
+.addMore {
   border: 1px dashed;
 }
 

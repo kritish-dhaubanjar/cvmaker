@@ -99,9 +99,12 @@
           </ul>
 
           <button
-            class="btn btn-success btn-block my-4"
+            class="btn btn-sm btn-success my-4 addMore"
             @click.prevent="addDescription"
           >ADD EDUCATION DETAILS</button>
+          <button class="btn btn-sm btn-info my-4 ml-auto float-right" @click.prevent="toggle">
+            <i class="far fa-check-square"></i> ALL
+          </button>
         </div>
 
         <div class="col-12 col-sm-12 col-md-12 col-lg-4">
@@ -260,6 +263,13 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    toggle() {
+      if (this.data.description.length > 0) {
+        this.data.description.forEach(e => {
+          e.addToSuggestion = true;
+        });
+      }
     }
   },
 
@@ -301,7 +311,7 @@ textarea {
   resize: none;
 }
 
-.btn-block {
+.addMore {
   border: 1px dashed;
 }
 

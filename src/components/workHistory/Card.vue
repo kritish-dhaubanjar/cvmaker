@@ -10,7 +10,7 @@
               <i>{{job}}</i>
             </p>
             <ul v-if="work.description.length>0">
-              <li>{{work.description[0].text}}</li>
+              <li v-for="description in work.description" :key="description">{{description.text}}</li>
             </ul>
           </div>
           <div class="col-2 text-right">

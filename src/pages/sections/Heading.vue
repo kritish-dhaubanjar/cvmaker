@@ -123,7 +123,7 @@
               />
             </div>
             <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-3">
-              <label for="twitter">Twitter</label>
+              <label for="twitter">Skype</label>
               <input
                 type="text"
                 class="form-control"
@@ -205,7 +205,7 @@ export default {
               link: ""
             },
             {
-              platform: "twitter",
+              platform: "skype",
               link: ""
             },
             {

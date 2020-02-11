@@ -69,7 +69,10 @@
               </draggable>
             </ul>
 
-            <button class="btn btn-success btn-block my-4" @click.prevent="addTraining">ADD ONE MORE</button>
+            <button class="btn btn-success addMore my-4" @click.prevent="addTraining">ADD ONE MORE</button>
+            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleTraining">
+              <i class="far fa-check-square"></i> ALL
+            </button>
           </div>
 
           <div class="col-12 col-sm-12 col-md-12 col-lg-4">
@@ -140,7 +143,10 @@
               </draggable>
             </ul>
 
-            <button class="btn btn-success btn-block my-4" @click.prevent="addCourse">ADD ONE MORE</button>
+            <button class="btn btn-success addMore my-4" @click.prevent="addCourse">ADD ONE MORE</button>
+            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleCourse">
+              <i class="far fa-check-square"></i> ALL
+            </button>
           </div>
 
           <div class="col-12 col-sm-12 col-md-12 col-lg-4">
@@ -345,6 +351,15 @@ export default {
         addToSuggestion: false
       });
     },
+
+    toggleTraining() {
+      if (this.data.data.trainings.data.length > 0) {
+        this.data.data.trainings.data.forEach(e => {
+          e.addToSuggestion = true;
+        });
+      }
+    },
+
     // COURSES
     addCourse() {
       this.data.data.courses.data.push({
@@ -366,6 +381,14 @@ export default {
         text: this.uniqueCourses[index],
         addToSuggestion: false
       });
+    },
+
+    toggleCourse() {
+      if (this.data.data.courses.data.length > 0) {
+        this.data.data.courses.data.forEach(e => {
+          e.addToSuggestion = true;
+        });
+      }
     }
   },
 
@@ -402,7 +425,7 @@ label {
   font-size: 13px;
 }
 
-.btn-block {
+.addMore {
   border: 1px dashed;
 }
 

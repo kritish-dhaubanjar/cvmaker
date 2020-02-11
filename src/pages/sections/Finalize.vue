@@ -35,6 +35,9 @@
         <br />
 
         <img :src="src" id="preview" class="img-fluid" width="200px" v-if="src.length>0" />
+        <br />
+        <br />
+        <button class="btn btn-danger" v-if="src.length>0" @click="removePhoto">REMOVE</button>
       </div>
     </div>
 
@@ -49,7 +52,6 @@
           type="submit"
           style="float:right"
           @click.prevent="finish"
-          :disabled="disabled"
         >FINISH</button>
       </div>
     </div>
@@ -71,7 +73,7 @@ export default {
   },
 
   created() {
-    if (this.id != null)
+    if (this.id != null && this.photo != null && this.photo.length > 0)
       this.src = `${this.hostname}/client_images/${this.photo}`;
   },
 
@@ -91,12 +93,6 @@ export default {
     }
   },
 
-  computed: {
-    disabled() {
-      return this.src.length == 0 && this.id == null;
-    }
-  },
-
   methods: {
     removeSection(item) {
       this.resume_ = this.resume_.filter(_item => {
@@ -107,6 +103,11 @@ export default {
 
     editSection(meta) {
       this.$emit("section", meta);
+    },
+
+    removePhoto() {
+      this.src = "";
+      this.file = null;
     },
 
     finish() {
@@ -145,6 +146,30 @@ export default {
                   this.$router.push({
                     name: "dashboard"
                   });
+                })
+                .catch(err => {
+                  console.log(err);
+                });
+            } else if (
+              this.src.length == 0 && // removePhoto
+              this.file == null && // removePhoto
+              this.id != null && // EDIT MODE
+              this.photo.length > 0 // PHOTO EXISTS
+            ) {
+              fetch(`${this.hostname}/api/deletephoto`, {
+                method: "DELETE",
+                body: JSON.stringify({
+                  userId: this.id
+                })
+              })
+                .then(json => json.json())
+                .then(data => {
+                  console.log(this.data);
+                  if (data.msg == "success") {
+                    this.$router.push({
+                      name: "dashboard"
+                    });
+                  }
                 })
                 .catch(err => {
                   console.log(err);

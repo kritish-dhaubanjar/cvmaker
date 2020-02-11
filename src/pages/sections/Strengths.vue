@@ -31,7 +31,10 @@
           </draggable>
         </ul>
 
-        <button class="btn btn-success btn-block my-4" @click.prevent="addStrength">ADD ONE MORE</button>
+        <button class="btn btn-success addMore my-4" @click.prevent="addStrength">ADD ONE MORE</button>
+        <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggle">
+          <i class="far fa-check-square"></i> ALL
+        </button>
       </div>
 
       <div class="col-12 col-sm-12 col-md-12 col-lg-4">
@@ -164,6 +167,14 @@ export default {
         strength: this.filtered[index],
         addToSuggestion: false
       });
+    },
+
+    toggle() {
+      if (this.data.data.length > 0) {
+        this.data.data.forEach(e => {
+          e.addToSuggestion = true;
+        });
+      }
     }
   },
 
@@ -200,7 +211,7 @@ label {
   font-size: 13px;
 }
 
-.btn-block {
+.addMore {
   border: 1px dashed;
 }
 
