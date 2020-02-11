@@ -271,7 +271,6 @@ export default {
     parse() {
       let pattern = /[\r\n]+/gm;
       let parsed = this.text.split(pattern);
-      console.log(parsed);
       this.data.description = [];
       parsed.forEach(p => {
         this.data.description.push({
