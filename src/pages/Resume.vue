@@ -8,98 +8,115 @@
               class="btn btn-danger dropdown-toggle btn-sm"
               type="button"
               data-toggle="dropdown"
-            >Select a Section</button>
+            >
+              Select a Section
+            </button>
             <div class="dropdown-menu">
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 0 ? 'active': ''"
-                @click="current=0"
-              >Heading</a>
+                :class="current == 0 ? 'active' : ''"
+                @click="current = 0"
+                >Heading</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 1 ? 'active': ''"
-                @click="current=1"
-              >Work History</a>
+                :class="current == 1 ? 'active' : ''"
+                @click="current = 1"
+                >Work History</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 2 ? 'active': ''"
-                @click="current=2"
-              >Education</a>
+                :class="current == 2 ? 'active' : ''"
+                @click="current = 2"
+                >Education</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 3 ? 'active': ''"
-                @click="current=3"
-              >Skills</a>
+                :class="current == 3 ? 'active' : ''"
+                @click="current = 3"
+                >Skills</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 4 ? 'active': ''"
-                @click="current=4"
-              >Languages</a>
+                :class="current == 4 ? 'active' : ''"
+                @click="current = 4"
+                >Languages</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 5 ? 'active': ''"
-                @click="current=5"
-              >Strengths</a>
+                :class="current == 5 ? 'active' : ''"
+                @click="current = 5"
+                >Strengths</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 6 ? 'active': ''"
-                @click="current=6"
-              >Personal Info</a>
+                :class="current == 6 ? 'active' : ''"
+                @click="current = 6"
+                >Personal Info</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 7 ? 'active': ''"
-                @click="current=7"
-              >License</a>
+                :class="current == 7 ? 'active' : ''"
+                @click="current = 7"
+                >License</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 8 ? 'active': ''"
-                @click="current=8"
-              >Trainings &amp; Courses</a>
+                :class="current == 8 ? 'active' : ''"
+                @click="current = 8"
+                >Trainings &amp; Courses</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 9 ? 'active': ''"
-                @click="current=9"
-              >Certifications &amp; Awards</a>
+                :class="current == 9 ? 'active' : ''"
+                @click="current = 9"
+                >Certifications &amp; Awards</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 10 ? 'active': ''"
-                @click="current=10"
-              >Summary</a>
+                :class="current == 10 ? 'active' : ''"
+                @click="current = 10"
+                >Summary</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 11 ? 'active': ''"
-                @click="current=11"
-              >Declaration</a>
+                :class="current == 11 ? 'active' : ''"
+                @click="current = 11"
+                >Declaration</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 12 ? 'active': ''"
-                @click="current=12"
-              >References</a>
+                :class="current == 12 ? 'active' : ''"
+                @click="current = 12"
+                >References</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 13 ? 'active': ''"
-                @click="current=13"
-              >Additional Sections</a>
+                :class="current == 13 ? 'active' : ''"
+                @click="current = 13"
+                >Additional Sections</a
+              >
               <a
                 href="#"
                 class="dropdown-item"
-                :class="current == 14 ? 'active': ''"
-                @click="current=14"
-              >Finish</a>
+                :class="current == 14 ? 'active' : ''"
+                @click="current = 14"
+                >Finish</a
+              >
             </div>
           </div>
         </div>
@@ -118,10 +135,21 @@
         @save="save"
       ></component>
     </keep-alive>
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="toast">
+    <div
+      class="toast"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      id="toast"
+    >
       <div class="toast-header">
         <strong class="mr-auto">Section Saved</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <button
+          type="button"
+          class="ml-2 mb-1 close"
+          data-dismiss="toast"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -181,9 +209,132 @@ export default {
       fetch(`${this.hostname}/api/clients/${this.id}`)
         .then(res => res.json())
         .then(data => {
-          this.resume = data.data;
+          /*this.resume = data.data;*/
           this.photo = data.photo;
           this.current = 0;
+
+          if (data.data.length > 0) {
+            let index = data.data.findIndex(
+              section => section.meta === "summary"
+            );
+            if (index > -1) {
+              data.data[index].data.addToSuggestion = false;
+            }
+
+            index = data.data.findIndex(
+              section => section.meta === "strengths"
+            );
+            if (index > -1) {
+              data.data[index].data = data.data[index].data.map(e => {
+                e.addToSuggestion = false;
+                return e;
+              });
+            }
+            index = data.data.findIndex(section => section.meta === "skills");
+            if (index > -1) {
+              data.data[index].data = data.data[index].data.map(e => {
+                e.addToSuggestion = false;
+                return e;
+              });
+            }
+
+            index = data.data.findIndex(section => section.meta === "info");
+            if (index > -1) {
+              data.data[index].data = data.data[index].data.map(e => {
+                e.addToSuggestion = false;
+                return e;
+              });
+            }
+
+            index = data.data.findIndex(section => section.meta === "licenses");
+            if (index > -1) {
+              data.data[index].data = data.data[index].data.map(e => {
+                e.addToSuggestion = false;
+                return e;
+              });
+            }
+
+            index = data.data.findIndex(
+              section => section.meta === "languages"
+            );
+            if (index > -1) {
+              data.data[index].data = data.data[index].data.map(e => {
+                e.addToSuggestion = false;
+                return e;
+              });
+            }
+
+            index = data.data.findIndex(
+              section => section.meta === "declaration"
+            );
+            if (index > -1) {
+              data.data[index].data.addToSuggestion = false;
+            }
+
+            index = data.data.findIndex(
+              section => section.meta === "certifications_awards"
+            );
+            if (index > -1) {
+              data.data[index].data.certifications.data = data.data[
+                index
+              ].data.certifications.data.map(e => {
+                e.addToSuggestion = false;
+                return e;
+              });
+
+              data.data[index].data.awards.data = data.data[
+                index
+              ].data.awards.data.map(e => {
+                e.addToSuggestion = false;
+                return e;
+              });
+            }
+
+            index = data.data.findIndex(
+              section => section.meta === "trainings_courses"
+            );
+            if (index > -1) {
+              data.data[index].data.trainings.data = data.data[
+                index
+              ].data.trainings.data.map(e => {
+                e.addToSuggestion = false;
+                return e;
+              });
+
+              data.data[index].data.courses.data = data.data[
+                index
+              ].data.courses.data.map(e => {
+                e.addToSuggestion = false;
+                return e;
+              });
+            }
+
+            index = data.data.findIndex(section => section.meta == "education");
+            if (index > -1) {
+              data.data[index].data = data.data[index].data.map(e => {
+                e.description = e.description.map(d => {
+                  d.addToSuggestion = false;
+                  return d;
+                });
+                return e;
+              });
+            }
+
+            index = data.data.findIndex(
+              section => section.meta == "workHistory"
+            );
+            if (index > -1) {
+              data.data[index].data = data.data[index].data.map(e => {
+                e.description = e.description.map(d => {
+                  d.addToSuggestion = false;
+                  return d;
+                });
+                return e;
+              });
+            }
+
+            this.resume = data.data;
+          }
         })
         .catch(err => {
           console.log(err);
