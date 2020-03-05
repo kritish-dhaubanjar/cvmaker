@@ -159,7 +159,8 @@ export default {
             } else if (
               this.src.length == 0 && // removePhoto
               this.file == null && // removePhoto
-              this.id != null && // EDIT MODE
+							this.id != null && // EDIT MODE
+							this.phone !=null &&
               this.photo.length > 0 // PHOTO EXISTS
             ) {
               fetch(`${this.hostname}/api/deletephoto/${this.id}`, {
