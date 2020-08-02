@@ -334,8 +334,8 @@ export default {
         confirmButtonText: "Yes, delete it!"
       }).then(result => {
         if (result.value) {
-          fetch(`${this.hostname}/api/clients/${id}`, {
-            method: "DELETE",
+          fetch(`${this.hostname}/api/clients/${id}/destroy`, {
+            method: "POST",
             headers: {
               Accept: "application/json"
             }

@@ -117,11 +117,12 @@ export default {
     },
 
     finish() {
-      let method = this.id == null ? "POST" : "PUT";
+      // let method = this.id == null ? "POST" : "PUT";
+      let method = "POST";
       let url =
         this.id == null
           ? `${this.hostname}/api/uploadcvdata`
-          : `${this.hostname}/api/clients/${this.id}`;
+          : `${this.hostname}/api/clients/${this.id}/update`;
 
       fetch(url, {
         method: method,
@@ -164,7 +165,7 @@ export default {
               this.photo.length > 0 // PHOTO EXISTS
             ) {
               fetch(`${this.hostname}/api/deletephoto/${this.id}`, {
-                method: "DELETE"
+                method: "POST"
               })
                 .then(json => json.json())
                 .then(data => {

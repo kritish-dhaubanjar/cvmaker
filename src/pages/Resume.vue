@@ -355,8 +355,8 @@ export default {
       index === -1 ? this.resume.push(data) : (this.resume[index] = data);
       // PUT ON SAVE
       if (this.id != null) {
-        fetch(`${this.hostname}/api/clients/${this.id}`, {
-          method: "PUT",
+        fetch(`${this.hostname}/api/clients/${this.id}/update`, {
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json"
