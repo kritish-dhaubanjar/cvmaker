@@ -6,6 +6,7 @@ import { store } from "./store.js";
 
 Vue.use(VueRouter);
 //Vue.prototype.hostname = "http://thegimmickbox.000webhostapp.com";
+// Vue.prototype.hostname = "http://cv.waytosuccess.com.np";
 Vue.prototype.hostname = "";
 //Vue.prototype.hostname = "http://prijal:8000";
 

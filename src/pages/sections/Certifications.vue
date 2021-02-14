@@ -14,7 +14,8 @@
           role="tab"
           aria-controls="nav-certification"
           aria-selected="true"
-        >CERTIFICATIONS</a>
+          >CERTIFICATIONS</a
+        >
         <a
           class="nav-item nav-link"
           id="nav-award-tab"
@@ -23,7 +24,8 @@
           role="tab"
           aria-controls="nav-awards"
           aria-selected="false"
-        >AWARDS</a>
+          >AWARDS</a
+        >
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
@@ -38,7 +40,10 @@
         <div class="row">
           <div class="col-12 col-sm-12 col-md-12 col-lg-8">
             <ul class="m-0 ml-1">
-              <draggable v-model="data.data.certifications.data" v-bind="{delay:200}">
+              <draggable
+                v-model="data.data.certifications.data"
+                v-bind="{ delay: 200 }"
+              >
                 <li
                   v-for="(item, index) in data.data.certifications.data"
                   :key="index"
@@ -46,7 +51,12 @@
                 >
                   <div class="row no-gutters">
                     <div class="col-12 col-sm-12 col-md-8">
-                      <textarea type="text" class="form-control mb-1" v-model="item.text" rows="2"></textarea>
+                      <textarea
+                        type="text"
+                        class="form-control mb-1"
+                        v-model="item.text"
+                        rows="2"
+                      ></textarea>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-1">
@@ -64,11 +74,15 @@
                           class="form-check-input"
                           v-model="item.addToSuggestion"
                         />
-                        <label class="form-check-label">Add to suggestions</label>
+                        <label class="form-check-label"
+                          >Add to suggestions</label
+                        >
                       </div>
                     </div>
                   </div>
-                  <hr class="d-block d-sm-block d-md-none d-lg-none mt-0 mb-3" />
+                  <hr
+                    class="d-block d-sm-block d-md-none d-lg-none mt-0 mb-3"
+                  />
                 </li>
               </draggable>
             </ul>
@@ -76,12 +90,20 @@
             <button
               class="btn btn-success addMore my-4"
               @click.prevent="addCertification"
-            >ADD ONE MORE</button>
+            >
+              ADD ONE MORE
+            </button>
             <button
               class="btn btn-info my-4 ml-auto float-right"
-              @click.prevent="toggleCertification"
+              @click.prevent="toggleCertification(true)"
             >
               <i class="far fa-check-square"></i> ALL
+            </button>
+            <button
+              class="btn btn-info my-4 ml-auto float-right mr-1"
+              @click.prevent="toggleCertification(false)"
+            >
+              <i class="far fa-square"></i> CHECK
             </button>
           </div>
 
@@ -109,28 +131,48 @@
                 @click="addToCertification(index)"
               >
                 <div class="card mb-1">
-                  <div class="card-body">{{suggestion}}</div>
+                  <div class="card-body">{{ suggestion }}</div>
                 </div>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="nav-awards" role="tabpanel" aria-labelledby="nav-awards-tab">
+      <div
+        class="tab-pane fade"
+        id="nav-awards"
+        role="tabpanel"
+        aria-labelledby="nav-awards-tab"
+      >
         <!-- awards -->
         <br />
         <div class="row">
           <div class="col-12 col-sm-12 col-md-12 col-lg-8">
             <ul class="m-0 ml-1">
-              <draggable v-model="data.data.awards.data" v-bind="{delay:200}">
-                <li v-for="(item, index) in data.data.awards.data" :key="index" class="mb-2">
+              <draggable
+                v-model="data.data.awards.data"
+                v-bind="{ delay: 200 }"
+              >
+                <li
+                  v-for="(item, index) in data.data.awards.data"
+                  :key="index"
+                  class="mb-2"
+                >
                   <div class="row no-gutters">
                     <div class="col-12 col-sm-12 col-md-8">
-                      <textarea type="text" class="form-control mb-1" v-model="item.text" rows="2"></textarea>
+                      <textarea
+                        type="text"
+                        class="form-control mb-1"
+                        v-model="item.text"
+                        rows="2"
+                      ></textarea>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-1">
-                      <button class="btn btn-danger btn-sm ml-1" @click.prevent="removeAward(item)">
+                      <button
+                        class="btn btn-danger btn-sm ml-1"
+                        @click.prevent="removeAward(item)"
+                      >
                         <i class="far fa-trash-alt"></i>
                       </button>
                     </div>
@@ -141,18 +183,36 @@
                           class="form-check-input"
                           v-model="item.addToSuggestion"
                         />
-                        <label class="form-check-label">Add to suggestions</label>
+                        <label class="form-check-label"
+                          >Add to suggestions</label
+                        >
                       </div>
                     </div>
                   </div>
-                  <hr class="d-block d-sm-block d-md-none d-lg-none mt-0 mb-3" />
+                  <hr
+                    class="d-block d-sm-block d-md-none d-lg-none mt-0 mb-3"
+                  />
                 </li>
               </draggable>
             </ul>
 
-            <button class="btn btn-success addMore my-4" @click.prevent="addAward">ADD ONE MORE</button>
-            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleAward">
+            <button
+              class="btn btn-success addMore my-4"
+              @click.prevent="addAward"
+            >
+              ADD ONE MORE
+            </button>
+            <button
+              class="btn btn-info my-4 ml-auto float-right"
+              @click.prevent="toggleAward(true)"
+            >
               <i class="far fa-check-square"></i> ALL
+            </button>
+            <button
+              class="btn btn-info my-4 ml-auto float-right mr-1"
+              @click.prevent="toggleAward(false)"
+            >
+              <i class="far fa-square"></i> CLEAR
             </button>
           </div>
 
@@ -180,7 +240,7 @@
                 @click="addToAward(index)"
               >
                 <div class="card mb-1">
-                  <div class="card-body">{{suggestion}}</div>
+                  <div class="card-body">{{ suggestion }}</div>
                 </div>
               </li>
             </ul>
@@ -194,14 +254,22 @@
         <br />
         <br />
         <br />
-        <button class="btn btn-outline-primary btn-sm" type="submit" @click="$emit('prev')">BACK</button>
+        <button
+          class="btn btn-outline-primary btn-sm"
+          type="submit"
+          @click="$emit('prev')"
+        >
+          BACK
+        </button>
         <button
           class="btn btn-danger ml-auto btn-sm py-1"
           type="submit"
           style="float:right"
           @click.prevent="$emit('next', data)"
           :disabled="disabled"
-        >SAVE & NEXT: SUMMARY</button>
+        >
+          SAVE & NEXT: SUMMARY
+        </button>
         <button
           class="btn btn-info ml-auto mr-1 btn-sm"
           type="submit"
@@ -237,31 +305,31 @@ export default {
           certifications: {
             data: [
               //{ text: "", addToSuggestion: false }
-            ]
+            ],
           },
           awards: {
             data: [
               // { text: "", addToSuggestion: false }
-            ]
-          }
-        }
-      }
+            ],
+          },
+        },
+      },
     };
   },
 
   watch: {
     certification_search() {
-      this.certifications_filtered = this.certifications.filter(suggestion =>
+      this.certifications_filtered = this.certifications.filter((suggestion) =>
         suggestion
           .toLowerCase()
           .includes(this.certification_search.toLowerCase())
       );
     },
     award_search() {
-      this.awards_filter = this.awards.filter(suggestion =>
+      this.awards_filter = this.awards.filter((suggestion) =>
         suggestion.toLowerCase().includes(this.award_search.toLowerCase())
       );
-    }
+    },
   },
 
   computed: {
@@ -282,13 +350,13 @@ export default {
 
     uniqueAwards() {
       return Array.from(new Set(this.awards_filter));
-    }
+    },
   },
 
   activated() {
     if (this.resume.length > 0) {
       let index = this.resume.findIndex(
-        section => section.meta === "certifications_awards"
+        (section) => section.meta === "certifications_awards"
       );
       if (index > -1) {
         this.data = this.resume[index];
@@ -296,18 +364,18 @@ export default {
     }
 
     if (this.resume.length > 0) {
-      let index = this.resume.findIndex(section => section.meta === "header");
+      let index = this.resume.findIndex((section) => section.meta === "header");
       if (index > -1) {
         let categories = this.resume[index].data.categories;
-        categories.forEach(category => {
+        categories.forEach((category) => {
           if (category.length > 0) {
             fetch(`${this.hostname}/api/certification?category=${category}`)
-              .then(res => res.json())
-              .then(data => {
+              .then((res) => res.json())
+              .then((data) => {
                 this.certifications = [...this.certifications, ...data];
                 this.certifications_filtered = this.certifications;
               })
-              .catch(err => {
+              .catch((err) => {
                 console.log(err);
               });
           }
@@ -316,19 +384,19 @@ export default {
     }
 
     if (this.resume.length > 0) {
-      let index = this.resume.findIndex(section => section.meta === "header");
+      let index = this.resume.findIndex((section) => section.meta === "header");
       if (index > -1) {
         let categories = this.resume[index].data.categories;
 
-        categories.forEach(category => {
+        categories.forEach((category) => {
           if (category.length > 0) {
             fetch(`${this.hostname}/api/award?category=${category}`)
-              .then(res => res.json())
-              .then(data => {
+              .then((res) => res.json())
+              .then((data) => {
                 this.awards = [...this.awards, ...data];
                 this.awards_filter = this.awards;
               })
-              .catch(err => {
+              .catch((err) => {
                 console.log(err);
               });
           }
@@ -342,13 +410,13 @@ export default {
     addCertification() {
       this.data.data.certifications.data.push({
         text: "",
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
 
     removeCertification(item) {
       this.data.data.certifications.data = this.data.data.certifications.data.filter(
-        _item => {
+        (_item) => {
           return _item != item;
         }
       );
@@ -357,14 +425,14 @@ export default {
     addToCertification(index) {
       this.data.data.certifications.data.push({
         text: this.uniqueCertifications[index],
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
 
-    toggleCertification() {
+    toggleCertification(state) {
       if (this.data.data.certifications.data.length > 0) {
-        this.data.data.certifications.data.forEach(e => {
-          e.addToSuggestion = true;
+        this.data.data.certifications.data.forEach((e) => {
+          e.addToSuggestion = state;
         });
       }
     },
@@ -373,35 +441,37 @@ export default {
     addAward() {
       this.data.data.awards.data.push({
         text: "",
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
 
     removeAward(item) {
-      this.data.data.awards.data = this.data.data.awards.data.filter(_item => {
-        return _item != item;
-      });
+      this.data.data.awards.data = this.data.data.awards.data.filter(
+        (_item) => {
+          return _item != item;
+        }
+      );
     },
 
     addToAward(index) {
       this.data.data.awards.data.push({
         text: this.uniqueAwards[index],
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
 
-    toggleAward() {
+    toggleAward(state) {
       if (this.data.data.awards.data.length > 0) {
-        this.data.data.awards.data.forEach(e => {
-          e.addToSuggestion = true;
+        this.data.data.awards.data.forEach((e) => {
+          e.addToSuggestion = state;
         });
       }
-    }
+    },
   },
 
   components: {
-    draggable
-  }
+    draggable,
+  },
 };
 </script>
 

@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-8">
         <ul class="m-0">
-          <draggable v-model="data.data" v-bind="{delay:200}">
+          <draggable v-model="data.data" v-bind="{ delay: 200 }">
             <li v-for="(item, index) in data.data" :key="index" class="mb-2">
               <div class="row no-gutters">
                 <div class="col-6 col-sm-6 col-md-4 pr-1">
@@ -21,19 +21,30 @@
 
                 <div class="col-6 col-sm-6 col-md-4">
                   <label class="mb-1">Value</label>
-                  <input type="text" class="form-control mb-1" v-model="item.value" />
+                  <input
+                    type="text"
+                    class="form-control mb-1"
+                    v-model="item.value"
+                  />
                   <!-- <textarea type="text" class="form-control mb-1" v-model="item.text" rows="2"></textarea> -->
                 </div>
                 <br class="d-block d-sm-block d-md-none" />
                 <br class="d-block d-sm-block d-md-none" />
                 <div class="col-6 col-sm-6 col-md-1">
-                  <button class="btn btn-danger btn-sm ml-1" @click.prevent="removeInfo(item)">
+                  <button
+                    class="btn btn-danger btn-sm ml-1"
+                    @click.prevent="removeInfo(item)"
+                  >
                     <i class="far fa-trash-alt"></i>
                   </button>
                 </div>
                 <div class="col-6 col-sm-6 col-md-3">
                   <div class="form-group form-check pt-1">
-                    <input type="checkbox" class="form-check-input" v-model="item.addToSuggestion" />
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      v-model="item.addToSuggestion"
+                    />
                     <label class="form-check-label">Add to suggestions</label>
                   </div>
                 </div>
@@ -43,16 +54,32 @@
           </draggable>
         </ul>
 
-        <button class="btn btn-success addMore my-4" @click.prevent="addInfo">ADD ONE MORE</button>
-        <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggle">
+        <button class="btn btn-success addMore my-4" @click.prevent="addInfo">
+          ADD ONE MORE
+        </button>
+        <button
+          class="btn btn-info my-4 ml-auto float-right"
+          @click.prevent="toggle(true)"
+        >
           <i class="far fa-check-square"></i> ALL
+        </button>
+        <button
+          class="btn btn-info my-4 ml-auto float-right mr-1"
+          @click.prevent="toggle(false)"
+        >
+          <i class="far fa-square"></i> CLEAR
         </button>
       </div>
 
       <div class="col-12 col-sm-12 col-md-12 col-lg-4">
         <p class="lead">Showing results for personal information</p>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Ex. Date of Birth" v-model="search" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ex. Date of Birth"
+            v-model="search"
+          />
           <div class="input-group-append">
             <span class="input-group-text">
               <i class="fas fa-search"></i>
@@ -62,9 +89,13 @@
 
         <br />
         <ul class="suggestions">
-          <li v-for="(suggestion, index) in filtered" :key="index" @click="addToInfo(index)">
+          <li
+            v-for="(suggestion, index) in filtered"
+            :key="index"
+            @click="addToInfo(index)"
+          >
             <div class="card mb-1">
-              <div class="card-body">{{suggestion}}</div>
+              <div class="card-body">{{ suggestion }}</div>
             </div>
           </li>
         </ul>
@@ -76,14 +107,22 @@
         <br />
         <br />
         <br />
-        <button class="btn btn-outline-primary btn-sm" type="submit" @click="$emit('prev')">BACK</button>
+        <button
+          class="btn btn-outline-primary btn-sm"
+          type="submit"
+          @click="$emit('prev')"
+        >
+          BACK
+        </button>
         <button
           class="btn btn-danger ml-auto btn-sm py-1"
           type="submit"
           style="float:right"
           @click.prevent="$emit('next', data)"
           :disabled="disabled"
-        >SAVE & NEXT: DRIVING LICENSE</button>
+        >
+          SAVE & NEXT: DRIVING LICENSE
+        </button>
         <button
           class="btn btn-info ml-auto mr-1 btn-sm"
           type="submit"
@@ -111,17 +150,17 @@ export default {
       suggestions: [],
       data: {
         meta: "info",
-        data: []
-      }
+        data: [],
+      },
     };
   },
 
   watch: {
     search() {
-      this.filtered = this.suggestions.filter(suggestion =>
+      this.filtered = this.suggestions.filter((suggestion) =>
         suggestion.toLowerCase().includes(this.search.toLowerCase())
       );
-    }
+    },
   },
 
   computed: {
@@ -133,23 +172,23 @@ export default {
       //   }
       // });
       return empty;
-    }
+    },
   },
 
   mounted() {
     if (this.resume.length > 0) {
-      let index = this.resume.findIndex(section => section.meta === "info");
+      let index = this.resume.findIndex((section) => section.meta === "info");
       if (index > -1) {
         this.data = this.resume[index];
       }
     }
     fetch(`${this.hostname}/api/info`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         this.suggestions = data;
         this.filtered = this.suggestions;
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   },
@@ -159,12 +198,12 @@ export default {
       this.data.data.push({
         key: "",
         value: "",
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
 
     removeInfo(item) {
-      this.data.data = this.data.data.filter(_item => {
+      this.data.data = this.data.data.filter((_item) => {
         return _item != item;
       });
     },
@@ -173,22 +212,22 @@ export default {
       this.data.data.push({
         key: this.filtered[index],
         value: "",
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
 
-    toggle() {
+    toggle(state) {
       if (this.data.data.length > 0) {
-        this.data.data.forEach(e => {
-          e.addToSuggestion = true;
+        this.data.data.forEach((e) => {
+          e.addToSuggestion = state;
         });
       }
-    }
+    },
   },
 
   components: {
-    draggable
-  }
+    draggable,
+  },
 };
 </script>
 
@@ -270,4 +309,3 @@ ul {
   }
 }
 </style>
-

@@ -6,35 +6,65 @@
       <div class="form-row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-3">
           <label for="name">School Name</label>
-          <input type="text" class="form-control" id="name" required v-model="data.name" />
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            v-model="data.name"
+          />
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-3">
           <label for="location">School Location</label>
-          <input type="text" class="form-control" id="location" required v-model="data.location" />
+          <input
+            type="text"
+            class="form-control"
+            id="location"
+            required
+            v-model="data.location"
+          />
         </div>
       </div>
 
       <div class="form-row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-4">
           <label for="degree">Degree</label>
-          <input type="text" class="form-control" id="degree" required v-model="data.degree" />
+          <input
+            type="text"
+            class="form-control"
+            id="degree"
+            required
+            v-model="data.degree"
+          />
           <span
             class="badge badge-pill badge-info mr-1"
             v-for="(degree, index) in filteredDegrees"
             :key="index"
             @click="fetchSuggestions(degree.title)"
-          >{{degree.title}}</span>
+            >{{ degree.title }}</span
+          >
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-3">
           <label for="fieldOfStudy">Field of Study</label>
-          <input type="text" class="form-control" id="fieldOfStudy" v-model="data.fieldOfStudy" />
+          <input
+            type="text"
+            class="form-control"
+            id="fieldOfStudy"
+            v-model="data.fieldOfStudy"
+          />
         </div>
       </div>
 
       <div class="form-row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-3">
           <label for="startDate">Graduation Start Date</label>
-          <input type="month" class="form-control" id="startDate" required v-model="data.startDate" />
+          <input
+            type="month"
+            class="form-control"
+            id="startDate"
+            required
+            v-model="data.startDate"
+          />
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-3">
           <label for="endDate">Graduation End Date</label>
@@ -58,27 +88,43 @@
             required
             v-model="data.isCurrent"
           />
-          <label class="form-check-label" for="isCurrent">I currently attend here.</label>
+          <label class="form-check-label" for="isCurrent"
+            >I currently attend here.</label
+          >
         </div>
       </div>
 
       <br />
       <br />
       <h3>Tell us about your education details.</h3>
-      <h6 class="mb-4">Get help writing your bullet points with the pre-written examples below.</h6>
+      <h6 class="mb-4">
+        Get help writing your bullet points with the pre-written examples below.
+      </h6>
 
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-8">
           <ul class="pl-4 m-0">
-            <draggable v-model="data.description" v-bind="{delay:200}">
-              <li v-for="(item, index) in data.description" :key="index" class="mb-2">
+            <draggable v-model="data.description" v-bind="{ delay: 200 }">
+              <li
+                v-for="(item, index) in data.description"
+                :key="index"
+                class="mb-2"
+              >
                 <div class="row no-gutters">
                   <div class="col-12 col-sm-12 col-md-8">
                     <!-- <input type="text" class="form-control" v-model="item.text" /> -->
-                    <textarea type="text" class="form-control mb-1" v-model="item.text" rows="2"></textarea>
+                    <textarea
+                      type="text"
+                      class="form-control mb-1"
+                      v-model="item.text"
+                      rows="2"
+                    ></textarea>
                   </div>
                   <div class="col-6 col-sm-6 col-md-1">
-                    <button class="btn btn-danger btn-sm" @click.prevent="removeDescription(item)">
+                    <button
+                      class="btn btn-danger btn-sm"
+                      @click.prevent="removeDescription(item)"
+                    >
                       <i class="far fa-trash-alt"></i>
                     </button>
                   </div>
@@ -101,9 +147,20 @@
           <button
             class="btn btn-sm btn-success my-4 addMore"
             @click.prevent="addDescription"
-          >ADD EDUCATION DETAILS</button>
-          <button class="btn btn-sm btn-info my-4 ml-auto float-right" @click.prevent="toggle">
+          >
+            ADD EDUCATION DETAILS
+          </button>
+          <button
+            class="btn btn-sm btn-info my-4 ml-auto float-right"
+            @click.prevent="toggle(true)"
+          >
             <i class="far fa-check-square"></i> ALL
+          </button>
+          <button
+            class="btn btn-sm btn-info my-4 ml-auto float-right mr-1"
+            @click.prevent="toggle(false)"
+          >
+            <i class="far fa-square"></i> CLEAR
           </button>
         </div>
 
@@ -126,9 +183,13 @@
           <br />
 
           <ul class="suggestions">
-            <li v-for="(suggestion, index) in filtered" :key="index" @click="addSuggestion(index)">
+            <li
+              v-for="(suggestion, index) in filtered"
+              :key="index"
+              @click="addSuggestion(index)"
+            >
               <div class="card mb-1">
-                <div class="card-body">{{suggestion}}</div>
+                <div class="card-body">{{ suggestion }}</div>
               </div>
             </li>
           </ul>
@@ -139,14 +200,22 @@
 
     <div class="row">
       <div class="col-12">
-        <button class="btn btn-outline-primary" type="submit" @click="$emit('back')">BACK</button>
+        <button
+          class="btn btn-outline-primary"
+          type="submit"
+          @click="$emit('back')"
+        >
+          BACK
+        </button>
         <button
           class="btn btn-danger ml-auto"
           type="submit"
           style="float:right"
           @click.prevent="$emit('save', data)"
           :disabled="disabled"
-        >SAVE &amp; NEXT</button>
+        >
+          SAVE &amp; NEXT
+        </button>
       </div>
     </div>
   </div>
@@ -182,17 +251,17 @@ export default {
           //   text: "",
           //   addToSuggestion: false
           // }
-        ]
-      }
+        ],
+      },
     };
   },
 
   watch: {
     search() {
-      this.filtered = this.suggestions.filter(suggestion =>
+      this.filtered = this.suggestions.filter((suggestion) =>
         suggestion.toLowerCase().includes(this.search.toLowerCase())
       );
-    }
+    },
   },
 
   mounted() {
@@ -200,11 +269,11 @@ export default {
       this.data = this.academic;
     }
     fetch(`${this.hostname}/api/education/degree`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         this.degrees = data;
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
     this.filtered = this.suggestions;
@@ -213,7 +282,7 @@ export default {
   computed: {
     filteredDegrees() {
       if (this.data.degree.length > 0) {
-        return this.degrees.filter(degree => {
+        return this.degrees.filter((degree) => {
           return degree.title
             .toLowerCase()
             .includes(this.data.degree.toLowerCase());
@@ -229,25 +298,25 @@ export default {
         this.data.location.length > 0 &&
         this.data.degree.length > 0
       );
-    }
+    },
   },
 
   methods: {
     addDescription() {
       this.data.description.push({
         text: "",
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
     removeDescription(item) {
-      this.data.description = this.data.description.filter(_item => {
+      this.data.description = this.data.description.filter((_item) => {
         return _item != item;
       });
     },
     addSuggestion(index) {
       this.data.description.push({
         text: this.filtered[index],
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
     fetchSuggestions(degree) {
@@ -255,27 +324,28 @@ export default {
       fetch(
         `${this.hostname}/api/education/description?degree=${this.data.degree}`
       )
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           this.suggestions = data;
           this.filtered = this.suggestions;
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
     },
-    toggle() {
+    toggle(state) {
+      //boolean
       if (this.data.description.length > 0) {
-        this.data.description.forEach(e => {
-          e.addToSuggestion = true;
+        this.data.description.forEach((e) => {
+          e.addToSuggestion = state;
         });
       }
-    }
+    },
   },
 
   components: {
-    draggable
-  }
+    draggable,
+  },
 };
 </script>
 

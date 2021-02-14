@@ -14,7 +14,8 @@
           role="tab"
           aria-controls="nav-training"
           aria-selected="true"
-        >TRAININGS</a>
+          >TRAININGS</a
+        >
         <a
           class="nav-item nav-link"
           id="nav-course-tab"
@@ -23,7 +24,8 @@
           role="tab"
           aria-controls="nav-courses"
           aria-selected="false"
-        >COURSES</a>
+          >COURSES</a
+        >
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
@@ -38,11 +40,23 @@
         <div class="row">
           <div class="col-12 col-sm-12 col-md-12 col-lg-8">
             <ul class="m-0 ml-1">
-              <draggable v-model="data.data.trainings.data" v-bind="{delay:400}">
-                <li v-for="(item, index) in data.data.trainings.data" :key="index" class="mb-2">
+              <draggable
+                v-model="data.data.trainings.data"
+                v-bind="{ delay: 400 }"
+              >
+                <li
+                  v-for="(item, index) in data.data.trainings.data"
+                  :key="index"
+                  class="mb-2"
+                >
                   <div class="row no-gutters">
                     <div class="col-12 col-sm-12 col-md-8">
-                      <textarea type="text" class="form-control mb-1" v-model="item.text" rows="2"></textarea>
+                      <textarea
+                        type="text"
+                        class="form-control mb-1"
+                        v-model="item.text"
+                        rows="2"
+                      ></textarea>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-1">
@@ -60,18 +74,36 @@
                           class="form-check-input"
                           v-model="item.addToSuggestion"
                         />
-                        <label class="form-check-label">Add to suggestions</label>
+                        <label class="form-check-label"
+                          >Add to suggestions</label
+                        >
                       </div>
                     </div>
                   </div>
-                  <hr class="d-block d-sm-block d-md-none d-lg-none mt-0 mb-3" />
+                  <hr
+                    class="d-block d-sm-block d-md-none d-lg-none mt-0 mb-3"
+                  />
                 </li>
               </draggable>
             </ul>
 
-            <button class="btn btn-success addMore my-4" @click.prevent="addTraining">ADD ONE MORE</button>
-            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleTraining">
+            <button
+              class="btn btn-success addMore my-4"
+              @click.prevent="addTraining"
+            >
+              ADD ONE MORE
+            </button>
+            <button
+              class="btn btn-info my-4 ml-auto float-right"
+              @click.prevent="toggleTraining(true)"
+            >
               <i class="far fa-check-square"></i> ALL
+            </button>
+            <button
+              class="btn btn-info my-4 ml-auto float-right mr-1"
+              @click.prevent="toggleTraining(false)"
+            >
+              <i class="far fa-square"></i> CLEAR
             </button>
           </div>
 
@@ -99,24 +131,41 @@
                 @click="addToTraining(index)"
               >
                 <div class="card mb-1">
-                  <div class="card-body">{{suggestion}}</div>
+                  <div class="card-body">{{ suggestion }}</div>
                 </div>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="nav-courses" role="tabpanel" aria-labelledby="nav-courses-tab">
+      <div
+        class="tab-pane fade"
+        id="nav-courses"
+        role="tabpanel"
+        aria-labelledby="nav-courses-tab"
+      >
         <!-- COURSES -->
         <br />
         <div class="row">
           <div class="col-12 col-sm-12 col-md-12 col-lg-8">
             <ul class="m-0 ml-1">
-              <draggable v-model="data.data.courses.data" v-bind="{delay:200}">
-                <li v-for="(item, index) in data.data.courses.data" :key="index" class="mb-2">
+              <draggable
+                v-model="data.data.courses.data"
+                v-bind="{ delay: 200 }"
+              >
+                <li
+                  v-for="(item, index) in data.data.courses.data"
+                  :key="index"
+                  class="mb-2"
+                >
                   <div class="row no-gutters">
                     <div class="col-12 col-sm-12 col-md-8">
-                      <textarea type="text" class="form-control mb-1" v-model="item.text" rows="2"></textarea>
+                      <textarea
+                        type="text"
+                        class="form-control mb-1"
+                        v-model="item.text"
+                        rows="2"
+                      ></textarea>
                     </div>
 
                     <div class="col-6 col-sm-6 col-md-1">
@@ -134,18 +183,36 @@
                           class="form-check-input"
                           v-model="item.addToSuggestion"
                         />
-                        <label class="form-check-label">Add to suggestions</label>
+                        <label class="form-check-label"
+                          >Add to suggestions</label
+                        >
                       </div>
                     </div>
                   </div>
-                  <hr class="d-block d-sm-block d-md-none d-lg-none mt-0 mb-3" />
+                  <hr
+                    class="d-block d-sm-block d-md-none d-lg-none mt-0 mb-3"
+                  />
                 </li>
               </draggable>
             </ul>
 
-            <button class="btn btn-success addMore my-4" @click.prevent="addCourse">ADD ONE MORE</button>
-            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleCourse">
+            <button
+              class="btn btn-success addMore my-4"
+              @click.prevent="addCourse"
+            >
+              ADD ONE MORE
+            </button>
+            <button
+              class="btn btn-info my-4 ml-auto float-right"
+              @click.prevent="toggleCourse(true)"
+            >
               <i class="far fa-check-square"></i> ALL
+            </button>
+            <button
+              class="btn btn-info my-4 ml-auto float-right mr-1"
+              @click.prevent="toggleCourse(false)"
+            >
+              <i class="far fa-check-square"></i> CLEAR
             </button>
           </div>
 
@@ -173,7 +240,7 @@
                 @click="addToCourse(index)"
               >
                 <div class="card mb-1">
-                  <div class="card-body">{{suggestion}}</div>
+                  <div class="card-body">{{ suggestion }}</div>
                 </div>
               </li>
             </ul>
@@ -187,14 +254,22 @@
         <br />
         <br />
         <br />
-        <button class="btn btn-outline-primary btn-sm" type="submit" @click="$emit('prev')">BACK</button>
+        <button
+          class="btn btn-outline-primary btn-sm"
+          type="submit"
+          @click="$emit('prev')"
+        >
+          BACK
+        </button>
         <button
           class="btn btn-danger ml-auto py-1 btn-sm"
           type="submit"
           style="float:right"
           @click.prevent="$emit('next', data)"
           :disabled="disabled"
-        >SAVE & NEXT: CERTIFICATIONS</button>
+        >
+          SAVE & NEXT: CERTIFICATIONS
+        </button>
         <button
           class="btn btn-info ml-auto mr-1 btn-sm"
           type="submit"
@@ -230,38 +305,38 @@ export default {
           trainings: {
             data: [
               //{ text: "", addToSuggestion: false }
-            ]
+            ],
           },
           courses: {
             data: [
               // { text: "", addToSuggestion: false }
-            ]
-          }
-        }
-      }
+            ],
+          },
+        },
+      },
     };
   },
 
   watch: {
     training_search() {
-      this.trainings_filtered = this.trainings.filter(suggestion =>
+      this.trainings_filtered = this.trainings.filter((suggestion) =>
         suggestion.toLowerCase().includes(this.training_search.toLowerCase())
       );
     },
     course_search() {
-      this.courses_filtered = this.courses.filter(suggestion =>
+      this.courses_filtered = this.courses.filter((suggestion) =>
         suggestion.toLowerCase().includes(this.course_search.toLowerCase())
       );
-    }
+    },
   },
 
   computed: {
     disabled() {
       let empty = false;
-      this.data.data.trainings.data.forEach(training => {
+      this.data.data.trainings.data.forEach((training) => {
         if (training.text.length == 0) empty = true;
       });
-      this.data.data.courses.data.forEach(course => {
+      this.data.data.courses.data.forEach((course) => {
         if (course.text.length == 0) empty = true;
       });
       return empty;
@@ -273,13 +348,13 @@ export default {
 
     uniqueCourses() {
       return Array.from(new Set(this.courses_filtered));
-    }
+    },
   },
 
   activated() {
     if (this.resume.length > 0) {
       let index = this.resume.findIndex(
-        section => section.meta === "trainings_courses"
+        (section) => section.meta === "trainings_courses"
       );
       if (index > -1) {
         this.data = this.resume[index];
@@ -287,18 +362,18 @@ export default {
     }
 
     if (this.resume.length > 0) {
-      let index = this.resume.findIndex(section => section.meta === "header");
+      let index = this.resume.findIndex((section) => section.meta === "header");
       if (index > -1) {
         let categories = this.resume[index].data.categories;
-        categories.forEach(category => {
+        categories.forEach((category) => {
           if (category.length > 0) {
             fetch(`${this.hostname}/api/training?category=${category}`)
-              .then(res => res.json())
-              .then(data => {
+              .then((res) => res.json())
+              .then((data) => {
                 this.trainings = [...this.trainings, ...data];
                 this.trainings_filtered = this.trainings;
               })
-              .catch(err => {
+              .catch((err) => {
                 console.log(err);
               });
           }
@@ -307,19 +382,19 @@ export default {
     }
 
     if (this.resume.length > 0) {
-      let index = this.resume.findIndex(section => section.meta === "header");
+      let index = this.resume.findIndex((section) => section.meta === "header");
       if (index > -1) {
         let categories = this.resume[index].data.categories;
 
-        categories.forEach(category => {
+        categories.forEach((category) => {
           if (category.length > 0) {
             fetch(`${this.hostname}/api/course?category=${category}`)
-              .then(res => res.json())
-              .then(data => {
+              .then((res) => res.json())
+              .then((data) => {
                 this.courses = [...this.courses, ...data];
                 this.courses_filtered = this.courses;
               })
-              .catch(err => {
+              .catch((err) => {
                 console.log(err);
               });
           }
@@ -333,13 +408,13 @@ export default {
     addTraining() {
       this.data.data.trainings.data.push({
         text: "",
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
 
     removeTraining(item) {
       this.data.data.trainings.data = this.data.data.trainings.data.filter(
-        _item => {
+        (_item) => {
           return _item != item;
         }
       );
@@ -348,14 +423,14 @@ export default {
     addToTraining(index) {
       this.data.data.trainings.data.push({
         text: this.uniqueTrainings[index],
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
 
-    toggleTraining() {
+    toggleTraining(state) {
       if (this.data.data.trainings.data.length > 0) {
-        this.data.data.trainings.data.forEach(e => {
-          e.addToSuggestion = true;
+        this.data.data.trainings.data.forEach((e) => {
+          e.addToSuggestion = state;
         });
       }
     },
@@ -364,13 +439,13 @@ export default {
     addCourse() {
       this.data.data.courses.data.push({
         text: "",
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
 
     removeCourse(item) {
       this.data.data.courses.data = this.data.data.courses.data.filter(
-        _item => {
+        (_item) => {
           return _item != item;
         }
       );
@@ -379,22 +454,22 @@ export default {
     addToCourse(index) {
       this.data.data.courses.data.push({
         text: this.uniqueCourses[index],
-        addToSuggestion: false
+        addToSuggestion: false,
       });
     },
 
-    toggleCourse() {
+    toggleCourse(state) {
       if (this.data.data.courses.data.length > 0) {
-        this.data.data.courses.data.forEach(e => {
+        this.data.data.courses.data.forEach((e) => {
           e.addToSuggestion = true;
         });
       }
-    }
+    },
   },
 
   components: {
-    draggable
-  }
+    draggable,
+  },
 };
 </script>
 
