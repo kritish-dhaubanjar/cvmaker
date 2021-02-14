@@ -87,7 +87,7 @@
               class="btn btn-info my-4 ml-auto float-right mr-1"
               @click.prevent="toggleCertification(false)"
             >
-              <i class="far fa-square"></i> CHECK
+              <i class="far fa-square"></i> CLEAR
             </button>
           </div>
 
