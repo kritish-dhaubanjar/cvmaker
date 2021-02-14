@@ -79,9 +79,15 @@
             >ADD ONE MORE</button>
             <button
               class="btn btn-info my-4 ml-auto float-right"
-              @click.prevent="toggleCertification"
+              @click.prevent="toggleCertification(true)"
             >
               <i class="far fa-check-square"></i> ALL
+            </button>
+            <button
+              class="btn btn-info my-4 ml-auto float-right mr-1"
+              @click.prevent="toggleCertification(false)"
+            >
+              <i class="far fa-square"></i> CHECK
             </button>
           </div>
 
@@ -151,8 +157,11 @@
             </ul>
 
             <button class="btn btn-success addMore my-4" @click.prevent="addAward">ADD ONE MORE</button>
-            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleAward">
+            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleAward(true)">
               <i class="far fa-check-square"></i> ALL
+            </button>
+            <button class="btn btn-info my-4 ml-auto float-right mr-1" @click.prevent="toggleAward(false)">
+              <i class="far fa-square"></i> CHECK
             </button>
           </div>
 
@@ -361,10 +370,10 @@ export default {
       });
     },
 
-    toggleCertification() {
+    toggleCertification(check) {
       if (this.data.data.certifications.data.length > 0) {
         this.data.data.certifications.data.forEach(e => {
-          e.addToSuggestion = true;
+          e.addToSuggestion = check;
         });
       }
     },
@@ -390,10 +399,10 @@ export default {
       });
     },
 
-    toggleAward() {
+    toggleAward(check) {
       if (this.data.data.awards.data.length > 0) {
         this.data.data.awards.data.forEach(e => {
-          e.addToSuggestion = true;
+          e.addToSuggestion = check;
         });
       }
     }

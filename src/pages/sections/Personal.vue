@@ -44,8 +44,11 @@
         </ul>
 
         <button class="btn btn-success addMore my-4" @click.prevent="addInfo">ADD ONE MORE</button>
-        <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggle">
+        <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggle(true)">
           <i class="far fa-check-square"></i> ALL
+        </button>
+        <button class="btn btn-info my-4 ml-auto float-right mr-1" @click.prevent="toggle(false)">
+          <i class="far fa-square"></i> CLEAR
         </button>
       </div>
 
@@ -177,10 +180,10 @@ export default {
       });
     },
 
-    toggle() {
+    toggle(check) {
       if (this.data.data.length > 0) {
         this.data.data.forEach(e => {
-          e.addToSuggestion = true;
+          e.addToSuggestion = check;
         });
       }
     }

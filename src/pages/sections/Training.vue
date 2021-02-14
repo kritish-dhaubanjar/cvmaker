@@ -70,8 +70,11 @@
             </ul>
 
             <button class="btn btn-success addMore my-4" @click.prevent="addTraining">ADD ONE MORE</button>
-            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleTraining">
+            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleTraining(true)">
               <i class="far fa-check-square"></i> ALL
+            </button>
+            <button class="btn btn-info my-4 ml-auto float-right mr-1" @click.prevent="toggleTraining(false)">
+              <i class="far fa-square"></i> CLEAR
             </button>
           </div>
 
@@ -144,8 +147,11 @@
             </ul>
 
             <button class="btn btn-success addMore my-4" @click.prevent="addCourse">ADD ONE MORE</button>
-            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleCourse">
+            <button class="btn btn-info my-4 ml-auto float-right" @click.prevent="toggleCourse(true)">
               <i class="far fa-check-square"></i> ALL
+            </button>
+            <button class="btn btn-info my-4 ml-auto float-right mr-1" @click.prevent="toggleCourse(false)">
+              <i class="far fa-square"></i> CLEAR
             </button>
           </div>
 
@@ -352,10 +358,10 @@ export default {
       });
     },
 
-    toggleTraining() {
+    toggleTraining(check) {
       if (this.data.data.trainings.data.length > 0) {
         this.data.data.trainings.data.forEach(e => {
-          e.addToSuggestion = true;
+          e.addToSuggestion = check;
         });
       }
     },
@@ -383,10 +389,10 @@ export default {
       });
     },
 
-    toggleCourse() {
+    toggleCourse(check) {
       if (this.data.data.courses.data.length > 0) {
         this.data.data.courses.data.forEach(e => {
-          e.addToSuggestion = true;
+          e.addToSuggestion = check;
         });
       }
     }

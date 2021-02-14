@@ -102,8 +102,11 @@
             class="btn btn-sm btn-success my-4 addMore"
             @click.prevent="addDescription"
           >ADD EDUCATION DETAILS</button>
-          <button class="btn btn-sm btn-info my-4 ml-auto float-right" @click.prevent="toggle">
+          <button class="btn btn-sm btn-info my-4 ml-auto float-right" @click.prevent="toggle(true)">
             <i class="far fa-check-square"></i> ALL
+          </button>
+          <button class="btn btn-sm btn-info my-4 ml-auto float-right mr-1" @click.prevent="toggle(false)">
+            <i class="far fa-square"></i> CLEAR
           </button>
         </div>
 
@@ -264,10 +267,10 @@ export default {
           console.log(err);
         });
     },
-    toggle() {
+    toggle(check) {
       if (this.data.description.length > 0) {
         this.data.description.forEach(e => {
-          e.addToSuggestion = true;
+          e.addToSuggestion = check;
         });
       }
     }

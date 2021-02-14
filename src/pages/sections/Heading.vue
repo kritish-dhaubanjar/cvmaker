@@ -103,12 +103,12 @@
 
           <div class="form-row">
             <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-3">
-              <label for="website">Website</label>
+              <label for="website">Whatsapp</label>
               <input
                 type="text"
                 class="form-control"
                 id="website"
-                placeholder="example.com"
+                placeholder="+977 987654321"
                 v-model="data.data.social[0].link"
               />
             </div>

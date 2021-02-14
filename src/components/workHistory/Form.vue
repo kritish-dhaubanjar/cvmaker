@@ -108,8 +108,11 @@
             class="btn btn-sm addMore btn-success my-4"
             @click.prevent="addDescription"
           >ADD WORK DETAILS</button>
-          <button class="btn btn-sm btn-info my-4 ml-auto float-right" @click.prevent="toggle">
+          <button class="btn btn-sm btn-info my-4 ml-auto float-right" @click.prevent="toggle(true)">
             <i class="far fa-check-square"></i> ALL
+          </button>
+          <button class="btn btn-sm btn-info my-4 ml-auto float-right mr-1" @click.prevent="toggle(false)">
+            <i class="far fa-square"></i> CLEAR
           </button>
           <button
             class="btn btn-outline-info btn-sm"
@@ -215,6 +218,7 @@ export default {
   mounted() {
     if (this.isEdit) {
       this.data = this.work;
+      this.text = this.data.map(e=>e.text).join("/n");
     }
     fetch(`${this.hostname}/api/workhistory/jobtitle`)
       .then(res => res.json())
@@ -249,7 +253,7 @@ export default {
     fetchSuggestions(title) {
       this.data.title = title;
       fetch(
-        `${this.hostname}/api/workhistory/description?jobtitle=${this.data.title}`
+        `${this.hostname}/api/workhistory/description?jobtitle=${encodeURIComponent(this.data.title)}`
       )
         .then(res => res.json())
         .then(data => {
@@ -260,10 +264,10 @@ export default {
           console.log(err);
         });
     },
-    toggle() {
+    toggle(check) {
       if (this.data.description.length > 0) {
         this.data.description.forEach(e => {
-          e.addToSuggestion = true;
+          e.addToSuggestion = check;
         });
       }
     },
