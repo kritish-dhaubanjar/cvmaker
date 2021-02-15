@@ -218,7 +218,7 @@ export default {
   mounted() {
     if (this.isEdit) {
       this.data = this.work;
-      this.text = this.data.map(e=>e.text).join("/n");
+      this.text = this.data.description.map(e=>e.text).join("\n");
     }
     fetch(`${this.hostname}/api/workhistory/jobtitle`)
       .then(res => res.json())
