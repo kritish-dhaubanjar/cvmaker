@@ -3,7 +3,11 @@
 > A Vue.js project
 
 ## PDF
-[CVExample.pdf](https://github.com/kritish-dhaubanjar/cvmaker/files/8040959/CVExample.pdf)
+- [CVExample.pdf](https://github.com/kritish-dhaubanjar/cvmaker/files/8040959/CVExample.pdf)
+- [CVExample_Doc.pdf](https://github.com/kritish-dhaubanjar/cvmaker/files/8041011/CVExample_Doc.pdf)
+
+## DOCX
+- [CVExample_DOCX.docx](https://github.com/kritish-dhaubanjar/cvmaker/files/8041007/CVExample_DOCX.docx)
 
 ## Build Setup
 
